@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function ConsultaRAM() {
     const [personagens, setPersonagens] = useState([]);
@@ -19,7 +20,9 @@ function ConsultaRAM() {
                             <div key={personagem.id}>
                                 <h2>{personagem.name}</h2>
                                 <p>{personagem.gender}</p>
-                                <img src={personagem.image} alt={personagem.name} />
+                                <Link to={`/consulta-ram/${personagem.id}`}>
+                                    <img src={personagem.image} alt={personagem.name} />
+                                </Link>
                             </div>
                         );
                     })
