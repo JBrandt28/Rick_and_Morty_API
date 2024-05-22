@@ -7,27 +7,25 @@ function ConsultaRAM() {
     useEffect(() => {
         console.log('Consultar API');
         fetch('https://rickandmortyapi.com/api/character')
-        .then((response) => response.json())//pega o arquivo e transforma em javascript
-        .then((resultadoConsulta) => {
-            setPersonagens(resultadoConsulta.results);
-        });//pega o conteúdo do arquivo trasnformado em javascript
-    }, []);//esses colchetes servem para fazer apenas 1 busca a cada vez que é chamada
+            .then((response) => response.json())
+            .then((resultadoConsulta) => {
+                setPersonagens(resultadoConsulta.results);
+            });
+    }, []);
 
-    return  <>
-                {
-                    personagens.map(personagem => {
-                        return (
-                            <div key={personagem.id}>
-                                <h2>{personagem.name}</h2>
-                                <p>{personagem.gender}</p>
-                                <Link to={`/consulta-ram/${personagem.id}`}>
-                                    <img src={personagem.image} alt={personagem.name} />
-                                </Link>
-                            </div>
-                        );
-                    })
-                }
-            </>
+    return (
+        <>
+            {personagens.map(personagem => (
+                <div key={personagem.id}>
+                    <br></br>
+                    <Link to={`/consulta-ram/${personagem.id}`}>
+                        <img src={personagem.image} alt={personagem.name} />
+                    </Link>
+                    <br></br>
+                </div>
+            ))}
+        </>
+    );
 }
 
 export default ConsultaRAM;

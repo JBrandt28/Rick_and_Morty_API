@@ -6,7 +6,8 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Tarefas from './tarefas/tarefas-componente.jsx'
 import Cabecalho from './componente-cabecalho/cabecalho.jsx'
 import ConsultaRAM from './consulta-ram/consulta-ram.jsx'
-import DetalhesPersonagem from './DetalhesPersonagem';
+import DetalhesPersonagem from './detalhes-personagens/Detalhes-Personagens.jsx';
+import Localizacoes from './localizacoes/Localizacoes.jsx'
 
 const routes = createBrowserRouter([
   {
@@ -14,28 +15,19 @@ const routes = createBrowserRouter([
     element: <Cabecalho />,
     children: [
       {
-        path: '/tarefas',
-        element: <Tarefas />
-      },
-      {
-        path: '/rota2',
-        element: <h1>Minha rota 2</h1>
-      },
-      {
         path: '/consulta-ram',
         element: <ConsultaRAM/>
       },
       {
-        path: '/detalhes-personagens/:id',
+        path: '/consulta-ram/:id',
         element: <DetalhesPersonagem />
       }
     ]
   }
 ]);
 
-ReactDOM.createRoot(document.getElementById('root'))
-.render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <RouterProvider router={routes} />
   </React.StrictMode>,
-)
+);
