@@ -3,7 +3,7 @@ import { Link, Outlet } from "react-router-dom";
 function Cabecalho() {
     return (
         <>
-            <h1>RICKY AND MORTY</h1>
+            <h1>RICK AND MORTY</h1>
             <br></br>
             <Link to={'/consulta-ram'}>Consulta Rick and Morty</Link>
             <Outlet />
