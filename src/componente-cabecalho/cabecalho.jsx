@@ -1,13 +1,19 @@
 import { Link, Outlet } from "react-router-dom";
+import './Styles_Cabecalho.css';
 
 function Cabecalho() {
     return (
-        <>
-            <h1>RICK AND MORTY</h1>
-            <br></br>
-            <Link to={'/consulta-ram'}>Consulta Rick and Morty</Link>
+        <div className="background-image">
+            <div className="header-content">
+                <h1>RICK AND MORTY</h1>
+                <br />
+                <Link to={'/consulta-ram'} style={{ color: 'silver', textDecoration: 'none' }}>
+                    Consulta Rick and Morty
+                </Link>
+            </div>
             <Outlet />
-        </>
+        </div>
     );
 }
+
 export default Cabecalho;

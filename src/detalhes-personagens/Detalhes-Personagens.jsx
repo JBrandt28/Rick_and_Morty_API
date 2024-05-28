@@ -1,10 +1,11 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 function DetalhesPersonagem() {
     const { id } = useParams();
     const [personagem, setPersonagem] = useState(null);
     const [localizacao, setLocalizacao] = useState(null);
+    const [episodios, setEpisodios] = useState([]);
 
     useEffect(() => {
         fetch(`https://rickandmortyapi.com/api/character/${id}`)
@@ -17,6 +18,11 @@ function DetalhesPersonagem() {
                         .then(response => response.json())
                         .then(locationData => setLocalizacao(locationData));
                 }
+                // Fetch episodes
+                const episodePromises = data.episode.map(episodeUrl =>
+                    fetch(episodeUrl).then(response => response.json())
+                );
+                Promise.all(episodePromises).then(episodes => setEpisodios(episodes));
             });
     }, [id]);
 
@@ -26,7 +32,7 @@ function DetalhesPersonagem() {
 
     return (
         <div>
-            <br></br>
+            <br />
             <img src={personagem.image} alt={personagem.name} />
             <h1>{personagem.name}</h1>
             <p><strong>Gênero:</strong> {personagem.gender}</p>
@@ -41,6 +47,14 @@ function DetalhesPersonagem() {
                     <p><strong>Residentes:</strong> {localizacao.residents.length}</p>
                 </div>
             )}
+            <h2>Episódios</h2>
+            <ul>
+                {episodios.map(episodio => (
+                    <li key={episodio.id}>
+                        <Link to={`/episodio/${episodio.id}`}>{episodio.name}</Link>
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 }
