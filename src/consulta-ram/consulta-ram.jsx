@@ -4,11 +4,11 @@ import "./Styles.css";
 
 function ConsultaRAM() {
     const [personagens, setPersonagens] = useState([]);
-    //const [pagina, setPagina] = useState(1);
-    const [pagina, setPagina] = useState(() => {
-        const savedPage = localStorage.getItem("pagina");
-        return savedPage ? parseInt(savedPage, 10) : 1;
-    });
+    const [pagina, setPagina] = useState(1);
+    // const [pagina, setPagina] = useState(() => {
+    //     const savedPage = localStorage.getItem("pagina");
+    //     return savedPage ? parseInt(savedPage, 10) : 1;
+    // });
     const [totalPaginas, setTotalPaginas] = useState(0);
 
     useEffect(() => {

@@ -10,6 +10,9 @@ function Cabecalho() {
                 <Link to={'/consulta-ram'} style={{ color: 'silver', textDecoration: 'none' }}>
                     Consulta Rick and Morty
                 </Link>
+                <Link to={'/'} style={{ color: 'silver', textDecoration: 'none', marginLeft: '20px' }}>
+                    Página Inicial
+                </Link>
             </div>
             <Outlet />
         </div>
