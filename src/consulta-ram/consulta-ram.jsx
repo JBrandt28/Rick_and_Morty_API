@@ -19,7 +19,7 @@ function ConsultaRAM() {
                 setTotalPaginas(resultadoConsulta.info.pages);
             });
     
-    localStorage.setItem("pagina", pagina);
+    //localStorage.setItem("pagina", pagina);
     window.scrollTo(0, 0);
 
     }, [pagina]);
